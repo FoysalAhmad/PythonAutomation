@@ -4,7 +4,7 @@
 
 import requests, sys, webbrowser, bs4
 
-print(' Googling...') 
+#print(' Googling...') 
 
 res = requests.get('http://google.com/search?q='+' '.join(sys.argv[1:]))
 
@@ -16,10 +16,10 @@ soup = bs4.BeautifulSoup(res.text)
 
 #open a browser tab for each results
 
-linkElems = soup.select('.r a')
+linkElems = soup.select('.r')
 
-numOpen = min(3,len(linkElems))
-
-for i in range(numOpen):
-	webbrowser.open('http://google.com'+linkElems[i].get('href'))
+numOpen = min(1,len(linkElems))
+print(linkElems[0].getText())
+#for i in range(numOpen):
+	#webbrowser.open('http://google.com'+linkElems[i].get('href'))
 
